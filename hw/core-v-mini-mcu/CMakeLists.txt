@@ -38,7 +38,7 @@ ip_sources(${IP} SYSTEMVERILOG
     ./xbar_varlat_one_to_n.sv
 )
 ip_link(${IP}
-    pulp-platform.org::cluster_interconnect::0.0.1
+    pulp-platform.org::cluster_interconnect
     x-heep::core::obi_pkg
     x-heep::core::addr_map_rule_pkg
     )
