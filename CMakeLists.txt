@@ -1,12 +1,9 @@
-# Add SoCMake
-# include("./cmake/deps.cmake")
-include("/tools/shared/SoCMake/SoCMakeConfig.cmake")
-include("/tools/shared/SoCMake/cmake/utils/colours.cmake")
-
 if(NOT CMAKE_GENERATOR STREQUAL Ninja)
-    message(WARNING "Currently only Ninja generator is supported, forcing Ninja generation")
-    set(CMAKE_GENERATOR Ninja)
+    message(FATAL_ERROR "Currently only Ninja generator is supported, forcing Ninja generation, please reconfigure the project with \"cmake -GNinja --fresh\"")
 endif()
+
+# Add SoCMake
+include("./cmake/deps.cmake")
 
 # Don't warn on languages added by Fusesoc and custom XHeep languages
 socmake_add_languages(OPENTITAN_HJSON OPENTITAN_HJSON_TEMPLATE OPENTITAN_SVH_TEMPLATE OPENTITAN_LINKER_TEMPLATE LINKER MAKEFILE OPENTITAN_SV_TEMPLATE VLT WAIVER TCL VERIBLELINTRULES XHEEP_CACHE MARKDOWN USER CPP C ASM SDC CONFIGFILE VERIBLELINTWAIVER OPENTITAN_C_HEADER_TEMPLATE OPENTITAN_ASM_TEMPLATE)
