@@ -12,8 +12,8 @@ filesets:
     depend:
       - pulp-platform.org::common_cells
     files:
-    - rtl/i2s_reg_pkg.sv
-    - rtl/i2s_reg_top.sv
+    # - rtl/i2s_reg_pkg.sv
+    # - rtl/i2s_reg_top.sv
     - rtl/i2s.sv
     - rtl/i2s_core.sv
     - rtl/i2s_rx_channel.sv

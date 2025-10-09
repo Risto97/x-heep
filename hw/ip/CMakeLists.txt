@@ -1,0 +1,10 @@
+add_subdirectory(i2s)
+add_subdirectory(fast_intr_ctrl)
+add_subdirectory(obi_fifo)
+add_subdirectory(obi_spimemio)
+add_subdirectory(soc_ctrl)
+add_subdirectory(power_manager)
+add_subdirectory(pdm2pcm)
+add_subdirectory(dma)
+add_subdirectory(dma_subsystem)
+
