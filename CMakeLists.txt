@@ -34,7 +34,7 @@ option_string(FW_ARCH    "Risc-V ISA to build firmware for" "rv32imc")
 ##### X-HEEP Simulation options ############
 ############################################
 
-option_enum(SIM "Which simulator to use" "verilator_cpp;verilator_sv;questasim;modelsim;xcelium" "verilator_sv")
+option_enum(SIM "Which simulator to use" "verilator_cpp;verilator_sv;questasim;modelsim;xcelium;vcs" "verilator_sv")
 option_boolean(SIM_TRACE "Generate simulation waveforms" OFF)
 option_file(SIM_UART_LOG_FILE "Write log file to a file (for \"-\" write to STDOUT)" "-")
 
@@ -54,6 +54,8 @@ elseif(SIM MATCHES verilator)
     verilator_configure_cxx(LIBRARIES DPI-C)
 elseif(SIM MATCHES xcelium)
     xcelium_configure_cxx(LIBRARIES DPI-C)
+elseif(SIM MATCHES vcs)
+    vcs_configure_cxx(LIBRARIES DPI-C)
 endif()
 
 cmake_minimum_required(VERSION 3.25)
@@ -140,6 +142,7 @@ add_subdirectory("./hw/system/pad_control")
 add_subdirectory("./sw/linker/")
 
 
+add_ip_from_fusesoc("./hw/vendor/waiver/verilator_waiver.core")
 add_ip_from_fusesoc("./core-v-mini-mcu.core")
 ip_sources(${IP} OPENTITAN_SV_TEMPLATE
     ./hw/core-v-mini-mcu/system_bus.sv.tpl

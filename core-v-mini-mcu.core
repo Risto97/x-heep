@@ -72,30 +72,30 @@ filesets:
     - hw/system/pad_ring.sv
     file_type: systemVerilogSource
 
-#  tb-utils:
-#    depend:
-#    - x-heep::tb-utils
-#    - x-heep::tb-fpu-utils
-#
-#  files_verilator_waiver:
-#    depend:
-#    - openhwgroup.org:ip:verilator_waiver
-#    files:
-#    - hw/core-v-mini-mcu/core_v_mini_mcu.vlt
-#    - hw/ip/soc_ctrl/soc_ctrl.vlt
-#    - hw/ip/boot_rom/boot_rom.vlt
-#    - hw/ip/obi_spimemio/obi_spimemio.vlt
-#    - hw/ip/dma/dma.vlt
-#    - hw/ip/dma_subsystem/dma_subsystem.vlt
-#    - hw/ip/pdm2pcm/pdm2pcm.vlt
-#    - hw/ip_examples/pdm2pcm_dummy/pdm2pcm_dummy.vlt
-#    - hw/ip/power_manager/power_manager.vlt
-#    - hw/ip/fast_intr_ctrl/fast_intr_ctrl.vlt
-#    - hw/system/pad_control/pad_control.vlt
-#    - hw/system/x_heep_system.vlt
-#    - hw/simulation/simulation.vlt
-#    - hw/ip/i2s/i2s.vlt
-#    file_type: vlt
+  # tb-utils:
+  #   depend:
+  #   - x-heep::tb-utils
+  #   - x-heep::tb-fpu-utils
+
+  files_verilator_waiver:
+    depend:
+    - openhwgroup.org:ip:verilator_waiver
+    files:
+    - hw/core-v-mini-mcu/core_v_mini_mcu.vlt
+    - hw/ip/soc_ctrl/soc_ctrl.vlt
+    - hw/ip/boot_rom/boot_rom.vlt
+    - hw/ip/obi_spimemio/obi_spimemio.vlt
+    - hw/ip/dma/dma.vlt
+    - hw/ip/dma_subsystem/dma_subsystem.vlt
+    - hw/ip/pdm2pcm/pdm2pcm.vlt
+    - hw/ip_examples/pdm2pcm_dummy/pdm2pcm_dummy.vlt
+    - hw/ip/power_manager/power_manager.vlt
+    - hw/ip/fast_intr_ctrl/fast_intr_ctrl.vlt
+    - hw/system/pad_control/pad_control.vlt
+    - hw/system/x_heep_system.vlt
+    - hw/simulation/simulation.vlt
+    - hw/ip/i2s/i2s.vlt
+    file_type: vlt
 #
 #  rtl-fpga:
 #    depend:

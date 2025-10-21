@@ -30,7 +30,10 @@ ip_link(${IP}
 #####################################################
 #### Compile testbench
 #####################################################
-set(FILE_SETS rtl_sim files_rtl rtl deprecated sim_jtag files_fpu_div remote_bitbang tb-harness systemverilog_only_uart files_clk_gate ff_regfile files_fcov clock-gate rtl-pkg rtl-tap files_rtl_generic rtl-simulation x_heep_system tb-sv)
+set(FILE_SETS rtl_sim files_rtl rtl deprecated sim_jtag files_fpu_div remote_bitbang tb-harness systemverilog_only_uart files_clk_gate ff_regfile files_fcov clock-gate rtl-pkg rtl-tap files_rtl_generic rtl-simulation x_heep_system tb-sv files_lint_verilator files_verilator_waiver files_verilator)
+
+get_ip_property(file_sets ${IP} FILE_SETS)
+list(REMOVE_DUPLICATES file_sets)
 
 # Handle the tracing for different simulators
 if(SIM_TRACE)
@@ -78,6 +81,17 @@ elseif(SIM MATCHES "questasim|modelsim")
 elseif(SIM MATCHES "xcelium")
     xcelium(${IP} LIBRARY work
         SV_COMPILE_ARGS -define XCELIUM
+        ELABORATE_ARGS -vtimescale 1ns/10ps
+        RUN_ARGS -vtimescale 1ns/10ps
+        FILE_SETS ${FILE_SETS}
+        NO_RUN_TARGET
+    )
+elseif(SIM MATCHES "vcs")
+    vcs(${IP} LIBRARY work
+        SV_COMPILE_ARGS -v2k_generate -assert svaext -assert disable_cover -debug_access+all+dmptf -ntb_opts error
+        # ELABORATE_ARGS -fgp -kdb -ntb_opts error -race=all -xlrm uniq_prior_final
+        ELABORATE_ARGS -xlrm uniq_prior_final -debug_access+all+dmptf
+        FILE_SETS ${FILE_SETS}
         NO_RUN_TARGET
     )
 endif()
