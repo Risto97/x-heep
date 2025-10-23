@@ -168,6 +168,10 @@ ip_link(${IP}
         xheep_linker
         )
 
+ip_link(pulp-platform.org::tech_cells_generic
+    openhwgroup.org::ip::verilator_waiver
+)
+
 mcu_gen_template(${IP} FILE_SET files_rtl)
 
 # TODO this python script is a mess
