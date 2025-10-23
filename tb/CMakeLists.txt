@@ -2,7 +2,7 @@ add_subdirectory("../hw/ip_examples/" "ip_examples")
 
 add_ip_from_fusesoc("../hw/vendor/pulp_platform_pulpissimo_simjtag.core")
 add_subdirectory("../hw/vendor/lowrisc_opentitan/hw/dv/dpi/uartdpi/" "uartdpi")
-add_ip_from_fusesoc("../hw/vendor/pulp_platform_pulpissimo_remote_bitbang.core")
+add_subdirectory("../hw/vendor/pulp_platform_pulpissimo/rtl/tb/" "remote_bitbang")
 
 add_ip_from_fusesoc("./x-heep-tb-utils.core")
 
@@ -88,7 +88,7 @@ elseif(SIM MATCHES "xcelium")
     )
 elseif(SIM MATCHES "vcs")
     vcs(${IP} LIBRARY work
-        SV_COMPILE_ARGS -v2k_generate -assert svaext -assert disable_cover -debug_access+all+dmptf -ntb_opts error
+        SV_COMPILE_ARGS -assert svaext -assert disable_cover -debug_access+all+dmptf -ntb_opts error
         # ELABORATE_ARGS -fgp -kdb -ntb_opts error -race=all -xlrm uniq_prior_final
         ELABORATE_ARGS -xlrm uniq_prior_final -debug_access+all+dmptf
         FILE_SETS ${FILE_SETS}
