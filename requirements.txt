@@ -1,8 +1,0 @@
-dataclasses
-hjson==3.1.0
-jsonref==1.0.1
-Mako==1.1.6
-MarkupSafe==2.0.1
-pyaml==23.5.8
-PyYAML==6.0.1
-setuptools

@@ -3,9 +3,6 @@ X-Heep fork with SoCMake support
 ```
 git clone https://github.com/Risto97/x-heep.git -b socmake
 cd x-heep
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 mkdir build && cd build
 cmake -GNinja ../
 ninja run_app_hello_world -j16
